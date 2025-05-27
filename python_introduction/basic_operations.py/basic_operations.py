@@ -1,8 +1,8 @@
 number1 = 10
 number2 = 5
-sum_result = number1 + number2
-difference_result = number1 - number2
-product_result = number1 * number2
-print(f"Addition of {number1} and {number2} is {sum_result}")
-print(f"Subtraction of {number1} and {number2} is {difference_result}")
-print(f"Multiplication of {number1} and {number2} is {product_result}")
+addition_total = number1 + number2
+print("Addition of", number1, "and", number2, "is", addition_total)
+subtraction_total = number1 - number2
+print("Subtraction of", number1, "and", number2, "is", subtraction_total)
+multiplication_total = number1 * number2
+print("Multiplication of", number1, "and", number2, "is", multiplication_total)

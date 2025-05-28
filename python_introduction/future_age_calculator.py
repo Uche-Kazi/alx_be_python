@@ -1,9 +1,5 @@
-age = ...
-current_year = 2023
-target_year = 2050
+current_age = int(input("How old are you?"))
 
-years_to_add = target_year - current_year
-
-future_age = age + years_to_add
+future_age = current_age + 27
 
 print("In 2050 you will be", future_age "years old")

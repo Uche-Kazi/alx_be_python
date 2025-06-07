@@ -19,7 +19,6 @@ def main():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-           
             item = input("Enter the item to add: ").strip()
             if item:
                 shopping_list.append(item)
@@ -28,7 +27,6 @@ def main():
                 print("Item name cannot be empty. Please try again.")
 
         elif choice == '2':
-            
             if not shopping_list:
                 print("Your shopping list is already empty. Nothing to remove.")
             else:
@@ -38,31 +36,25 @@ def main():
                         shopping_list.remove(item_to_remove)
                         print(f"'{item_to_remove}' has been removed from your shopping list.")
                     except ValueError:
-                        
                         print(f"'{item_to_remove}' was not found in your shopping list.")
                 else:
                     print("Item name cannot be empty. Please try again.")
 
         elif choice == '3':
-            
             if not shopping_list:
                 print("\nYour shopping list is currently empty.")
             else:
                 print("\n--- YOUR CURRENT SHOPPING LIST ---")
-                
                 for i, item in enumerate(shopping_list, 1):
                     print(f"{i}. {item}")
                 print("----------------------------------")
 
         elif choice == '4':
-            
             print("Exiting Shopping List Manager. Goodbye!")
             break
 
         else:
-            
             print("Invalid choice. Please enter a number between 1 and 4.")
-
 
 if __name__ == "__main__":
     main()

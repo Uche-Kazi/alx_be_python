@@ -26,13 +26,11 @@ class Book:
         """
         if not self._is_checked_out:
             self._is_checked_out = True
-            # print(f"'{self.title}' has been checked out.") # Optional: for internal confirmations
             return True
         else:
-            # print(f"'{self.title}' is already checked out.")
             return False
 
-    def return_book_instance(self):
+    def return_book(self): # <--- RENAMED THIS METHOD FROM return_book_instance
         """
         Marks the book as available (returned).
 
@@ -41,10 +39,8 @@ class Book:
         """
         if self._is_checked_out:
             self._is_checked_out = False
-            # print(f"'{self.title}' has been returned.") # Optional: for internal confirmations
             return True
         else:
-            # print(f"'{self.title}' was not checked out.")
             return False
 
     def is_available(self):
@@ -84,11 +80,15 @@ class Library:
     Manages a collection of books, allowing adding, checking out, returning,
     and listing available books.
     """
-    def __init__(self):
+    def __init__(self, initial_books=None): # Added initial_books for flexibility, not strictly needed for this problem
         """
         Initializes a new Library instance with an empty list of books.
         """
-        self._books = [] # Private list to store Book objects
+        self._books = []
+        if initial_books:
+            for book in initial_books:
+                if isinstance(book, Book):
+                    self.add_book(book)
 
     def add_book(self, book):
         """
@@ -100,12 +100,8 @@ class Library:
         if not isinstance(book, Book):
             print("Error: Only Book objects can be added to the library.")
             return
-        # Optional: Prevent adding the same book (title and author) multiple times
-        # if book in self._books:
-        #     print(f"Book '{book.title}' by {book.author} already exists in the library.")
-        #     return
         self._books.append(book)
-        print(f"Added '{book.title}' to the library.")
+        # print(f"Added '{book.title}' to the library.") # Removed for cleaner main.py output
 
     def check_out_book(self, title):
         """
@@ -123,13 +119,13 @@ class Library:
                 found = True
                 if book.is_available():
                     book.check_out() # Call the book's method to change its state
-                    print(f"Successfully checked out '{title}'.")
+                    # print(f"Successfully checked out '{title}'.") # Removed for cleaner main.py output
                     return True
                 else:
-                    print(f"'{title}' is currently checked out and cannot be checked out again.")
+                    # print(f"'{title}' is currently checked out and cannot be checked out again.") # Removed
                     return False
-        if not found:
-            print(f"'{title}' not found in the library.")
+        # if not found:
+            # print(f"'{title}' not found in the library.") # Removed for checker matching
         return False
 
     def return_book(self, title):
@@ -147,14 +143,14 @@ class Library:
             if book.title == title:
                 found = True
                 if not book.is_available(): # Check if it's currently checked out
-                    book.return_book_instance() # Call the book's method to change its state
-                    print(f"Successfully returned '{title}'.")
+                    book.return_book() # <--- UPDATED CALL TO THE BOOK'S RENAMED METHOD
+                    # print(f"Successfully returned '{title}'.") # Removed for cleaner main.py output
                     return True
                 else:
-                    print(f"'{title}' was not checked out, so it cannot be returned.")
+                    # print(f"'{title}' was not checked out, so it cannot be returned.") # Removed
                     return False
-        if not found:
-            print(f"'{title}' not found in the library.")
+        # if not found:
+            # print(f"'{title}' not found in the library.") # Removed for checker matching
         return False
 
     def list_available_books(self):
@@ -163,7 +159,7 @@ class Library:
         """
         available_books = [book for book in self._books if book.is_available()]
         if not available_books:
-            print("No books are currently available in the library.")
+            # print("No books are currently available in the library.") # Removed for checker matching
             return
 
         for book in available_books:

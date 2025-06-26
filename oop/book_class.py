@@ -18,7 +18,7 @@ class Book:
         self.title = title
         self.author = author
         self.year = year
-        print(f"Book '{self.title}' created.") # Optional: Confirmation of creation
+        # Removed: print(f"Book '{self.title}' created.") - This was an extra print
 
     def __del__(self):
         """
@@ -39,5 +39,4 @@ class Book:
         Official Representation method: Provides an unambiguous, developer-friendly
         string representation that could (ideally) recreate the object.
         """
-        # Using f-string to create a string that looks like a constructor call
         return f"Book('{self.title}', '{self.author}', {self.year})"

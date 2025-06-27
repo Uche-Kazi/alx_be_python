@@ -2,45 +2,23 @@
 
 class Calculator:
     """
-    A class demonstrating the usage and differences between
-    static methods and class methods in Python.
+    A class demonstrating static and class methods.
     """
-
-    # Class attribute: shared by all instances of the class and the class itself.
-    calculation_type = "Arithmetic Operations"
+    calculation_type = "Arithmetic Operations" # Class attribute
 
     @staticmethod
-    def add(a: int, b: int) -> int:
+    def add(a, b):
         """
-        A static method that returns the sum of two numbers.
-        It does not receive 'self' or 'cls' and cannot access instance
-        or class-specific attributes directly. It behaves like a regular function
-        that happens to be inside the class's namespace.
-
-        Args:
-            a (int): The first number.
-            b (int): The second number.
-
-        Returns:
-            int: The sum of a and b.
+        A static method that sums two numbers.
+        It doesn't use 'self' or 'cls'.
         """
         return a + b
 
     @classmethod
-    def multiply(cls, a: int, b: int) -> int:
+    def multiply(cls, a, b):
         """
-        A class method that returns the product of two numbers.
-        It receives the class itself as the first argument (conventionally 'cls').
-        This allows it to access and modify class-level attributes.
-
-        Args:
-            cls (type): The class itself (e.g., Calculator).
-            a (int): The first number.
-            b (int): The second number.
-
-        Returns:
-            int: The product of a and b.
+        A class method that multiplies two numbers and prints the class attribute.
+        It receives 'cls' (the class itself) as its first argument.
         """
-        # Accessing the class attribute 'calculation_type' using 'cls'
         print(f"Calculation type: {cls.calculation_type}")
         return a * b

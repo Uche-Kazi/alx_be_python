@@ -1,0 +1,5 @@
+# .gitignore in alx_be_python repository root
+my_django_root/venv/
+my_django_root/__pycache__/
+my_django_root/*.pyc
+my_django_root/*.sqlite3
